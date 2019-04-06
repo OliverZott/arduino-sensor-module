@@ -1,0 +1,20 @@
+# ===================================================
+# Sensors and Python
+# ===================================================
+
+1.Step:
+Test python script with arduino-temp sensor module
+
+2.Step:
+include lux-sensor and test python script again
+
+adding: loops for automated value logging
+	if-branches for automated value logging
+
+
+# ===================================================
+# Sensors and Python
+# ===================================================
+
+1.Step:
+Test RFID Modul (distance testing)
