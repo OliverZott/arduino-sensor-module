@@ -1,20 +1,35 @@
 # ===================================================
+# GIT
+# ===================================================
+cd d:/Users/Dura/Documents/Arduino/Projekt_1
+dir -ls
+git status
+git diff / git show
+
+
+# ===================================================
 # Sensors and Python
 # ===================================================
 
 1.Step:
-Test python script with arduino-temp sensor module
+Test python script with arduino-temp sensor module		-> done
 
 2.Step:
-include lux-sensor and test python script again
+include lux-sensor and test python script again			-> done
 
-adding: loops for automated value logging
+adding: loops for automated value logging			-> done
 	if-branches for automated value logging
 
 
 # ===================================================
-# Sensors and Python
+# Wireless Communication
 # ===================================================
 
 1.Step:
 Test RFID Modul (distance testing)
+
+2.Step:
+433 Mhz Modul / 2.4 Ghz Modul
+
+3.Step:
+send AND recive
