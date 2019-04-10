@@ -71,7 +71,7 @@ def values_re(data_str):
 #===============================================================
 
 def file_io (temp, hum, lux):
-	date = datetime.datetime.now().strftime("%Y-%m-%d")							# date for filename
+	date = datetime.datetime.now().strftime("%Y-%m-%d")				        # date for filename
 	dateANDtime = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")			# date & time
 	
 	# meassurement-String
