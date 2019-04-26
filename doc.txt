@@ -1,3 +1,4 @@
+
 # ===================================================
 # GIT
 # ===================================================
@@ -7,29 +8,76 @@ git status
 git diff / git show
 
 
+
+# ===================================================
+# Fehlerbehandlung & Modularisierung
+# ===================================================
+Ex.: lux-Sensor error (error.log)
+
+1.Step:
+.err and.log files						-
+
+2.Step:
+Fehlerbehandlung (exception handling)				-
+
+3.Step:
+Modularisierung / OOP						-
+
+
+
 # ===================================================
 # Sensors and Python
 # ===================================================
 
 1.Step:
-Test python script with arduino-temp sensor module		-> done
+Test python script with arduino-temp sensor module		- done
 
 2.Step:
-include lux-sensor and test python script again			-> done
+include lux-sensor and test python script again			- done
 
-adding: loops for automated value logging			-> done
-	if-branches for automated value logging
+
+adding: loops for automated value logging			- done
+	if-branches for automated value logging			- done
+	test clock-time						- done
+
+3.Step:
+
 
 
 # ===================================================
 # Wireless Communication
 # ===================================================
 
-1.Step:
-Test RFID Modul (distance testing)
+1.Step:								
+Test Modules 							-
+	- RFID 							-
+	- 433 Mhz						- done (low range!)
+	- 2.4 Ghz						-
 
 2.Step:
-433 Mhz Modul / 2.4 Ghz Modul
+tweak RANGE!							-
 
 3.Step:
-send AND recive
+send AND recive	
+
+
+
+# ===================================================
+# Combining (PCB + Nano)
+# ===================================================
+
+1.Step:
+Erster Versuchsaufbau auf einer Platine 			- 
+
+
+
+# ===================================================
+# Auswertung
+# ===================================================
+
+1.Step:
+Automated GnuPlot charts					- done
+
+
+
+
