@@ -15,12 +15,18 @@ git diff / git show
 Ex.: lux-Sensor error (error.log)
 
 1.Step:
-.err and.log files						-
+C-Code for Arduino: array<float,3>				-
 
 2.Step:
-Fehlerbehandlung (exception handling)				-
+C-Code for Arduino: vector / struct instead array		-
 
 3.Step:
+.err and.log files						-
+
+4.Step:
+Fehlerbehandlung (exception handling)				-
+
+5.Step:
 Modularisierung / OOP						-
 
 
@@ -49,10 +55,10 @@ adding: loops for automated value logging			- done
 # ===================================================
 
 1.Step:								
-Test Modules 							-
+Test Modules 							
 	- RFID 							-
-	- 433 Mhz						- done (low range!)
-	- 2.4 Ghz						-
+	- 433 MHz						- 
+	- 2.4 GHz						- done (low range!)
 
 2.Step:
 tweak RANGE!							-
@@ -67,7 +73,10 @@ send AND recive
 # ===================================================
 
 1.Step:
-Erster Versuchsaufbau auf einer Platine 			- 
+Erster Versuchsaufbau auf einem BreadBoard			- done (2.4GHz)
+
+2.Step:
+Soldering on PCB						-
 
 
 
