@@ -17,10 +17,41 @@
 #include <Adafruit_Sensor.h>
 #include <Adafruit_TSL2561_U.h>
 
+// Serial Peripheral Interface (for communication with SPI devices)
+#include <SPI.h>
+// NRF24 libraries
+#include <nRF24L01.h>
+#include <RF24.h>
+
+/*
+// not sure yet (delete in case of error)
+#include <RF24_config.h>
+#include <printf.h>
+*/
+
+/* String Operations 
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+*/
+
+
 /* 
- * =========================================================================================
+ * =================================================================================================================
+ * 2.4Ghz Transmitter (RF24L01)
+ * =================================================================================================================
+ */
+
+RF24 radio(7,8);    // Create Object & Array (line 110 in RF24.h / Arguments: CNS, CE)
+
+const byte address[6] = "00001";  // Array represanting Adress (Pipe) to communication (5-letter String)
+
+
+
+/* 
+ * =================================================================================================================
  * Temperatur & Humidity Modul (DHT11)
- * =========================================================================================
+ * =================================================================================================================
  */
 
 // library: <SimpleDHT.h>
@@ -32,10 +63,12 @@
 int pinDHT11 = 2;
 SimpleDHT11 dht11;
 
+
+
 /* 
- * =========================================================================================
+ * =================================================================================================================
  * Luxmeter Modul (TSL 2561)
- * =========================================================================================
+ * =================================================================================================================
  */
  
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
@@ -62,7 +95,6 @@ void displaySensorDetails(void)
   delay(500);
 }
 
-
 /* 
  * --------------------------------------------------------------------------
  * Configures the gain and integration time for the TSL2561
@@ -81,10 +113,14 @@ void configureSensor(void)
   // tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_402MS);  /* 16-bit data but slowest conversions */
 }
 
+
+
+
+
 /* 
- * =========================================================================================
+ * =================================================================================================================
  * Arduino setup funtion (automatically called at startup)
- * =========================================================================================
+ * =================================================================================================================
  */
 
 void setup(void) 
@@ -92,23 +128,28 @@ void setup(void)
   Serial.begin(9600);
   //Serial.println("Light Sensor Test"); Serial.println("");
 
-  /* Initializing Sensor */
+  /* Initializing TSL2561 Sensor */
   if(!tsl.begin()){
     /* There was a problem detecting the ADXL345 ... check your connections */
     Serial.print("Ooops, no TSL2561 detected ... Check your wiring or I2C ADDR!");
     while(1);
   }
 
+  /* Configure TSL2561 Sensor */
   //displaySensorDeteils();
   configureSensor();
+
   
 }
 
 
+
+
+
 /* 
- * =========================================================================================
+ * =================================================================================================================
  * MAIN void loop (): Arduino loop function, called once 'setup' is complete (COde goes here)
- * =========================================================================================
+ * =================================================================================================================
  */
 
 void loop() {
@@ -118,8 +159,7 @@ void loop() {
  * Temperatur/Humidity
  * --------------------------------------------------------------------------
 */
-   
-  // read with raw sample data.
+  
   byte temperature = 0;
   byte humidity = 0;
   byte data[40] = {0};
@@ -128,18 +168,17 @@ void loop() {
     return;
   }
   
+
   // Output: Sample Bits
   for (int i = 0; i < 40; i++) {
     Serial.print((int)data[i]);             // byte data[40] in dht11.h / 
     if (i > 0 && ((i + 1) % 4) == 0) {      // macht Abstand zwischen 4er Gruppen
       Serial.print(' '); 
     }
-  }
+  } 
+  Serial.println("");
   Serial.print((int)temperature); Serial.print(" *C, ");
-  Serial.print((int)humidity); Serial.print(" %, ");
-  
-  
-  
+  Serial.print((int)humidity); Serial.println(" %");
 /* 
  * --------------------------------------------------------------------------
  * Luxmeter
@@ -149,13 +188,9 @@ void loop() {
   sensors_event_t event;
   tsl.getEvent(&event);
 
+  
   if (event.light) {
     Serial.print(event.light); Serial.println(" lux");
   }
-  
-  
-
-  //  sampling rate is 1HZ (DHT11 / TSL2561)
-  //  Problem with 1HZ sampling rate !?!?!
-  delay(1100);                                          
+  delay(2000);
 }

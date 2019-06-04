@@ -7,6 +7,12 @@ dir -ls
 git status
 git diff / git show
 
+git add filename.extension 
+git commit -m "comment to descripe changes"
+
+git remote
+git push origin master 
+
 
 
 # ===================================================
