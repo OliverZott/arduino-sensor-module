@@ -205,6 +205,14 @@ void loop() {
     arr[2] = event.light;
   }
 
+  Serial.println("");
+  //Serial.print((int)temperature); Serial.print(" *C, ");
+  //Serial.print((int)humidity); Serial.println(" %");
+  //Serial.print(event.light); Serial.println(" lux");
+  for(int i=0; i<3; i++){
+    Serial.print(arr[i]);Serial.print(", ");
+  }
+
 /* 
  * --------------------------------------------------------------------------
  * Transmission of float-array
@@ -214,5 +222,5 @@ void loop() {
   radio.write(&arr, sizeof(arr));
 
   /*  sampling rate is 1HZ (DHT11 / TSL2561); Problem with 1HZ sampling rate !? */
-  delay(1100);                                          
+  delay(2000);                                          
 }
