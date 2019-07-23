@@ -46,8 +46,6 @@ RF24 radio(7,8);    // Create Object & Array (line 110 in RF24.h / Arguments: CN
 
 const byte address[6] = "00001";  // Array represanting Adress (Pipe) to communication (5-letter String)
 
-
-
 /* 
  * =================================================================================================================
  * Temperatur & Humidity Modul (DHT11)
@@ -62,8 +60,6 @@ const byte address[6] = "00001";  // Array represanting Adress (Pipe) to communi
 
 int pinDHT11 = 2;
 SimpleDHT11 dht11;
-
-
 
 /* 
  * =================================================================================================================
@@ -115,8 +111,6 @@ void configureSensor(void)
 
 
 
-
-
 /* 
  * =================================================================================================================
  * Arduino setup funtion (automatically called at startup)
@@ -142,7 +136,7 @@ void setup(void)
   /* Configure RF24L01 Transceiver */
   radio.begin();                                    // lines: 137(h) / 589(cpp)       - Checks if the chip is connected to the SPI bus
   radio.openWritingPipe(address);                   // lines: 257(h) / 1145(cpp)      - Open a pipe for reading (up to 6)
-  radio.setPALevel(RF24_PA_MIN);                    //                                - set power amplifier level (for different distances) --> higher level => bypass capacitators between gnd - 3.3v for more stable voltage while operating
+  radio.setPALevel(RF24_PA_MIN);                    // lines: 31(h) / 1434 (cpp)      - set power amplifier level (for different distances) --> higher level => bypass capacitators between gnd - 3.3v for more stable voltage while operating
   radio.stopListening();
   
 }
