@@ -1,0 +1,34 @@
+// called with CTRL + SHIFT + B 
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Python: Current File",
+            "type": "shell",
+            "command": "python ${file}",
+            "args": [],
+            "group": "build",
+        },
+        {
+            "label": "Python: Test File",
+            "type": "shell",
+            "command": "python C:/Train/python-training/udemy_python_advanced/Chapter07_Testing_Debugging/test.py",
+            "args": [],
+            "group": "build",
+        },
+        {
+            "label": "Python: cmd-line args",
+            "type": "shell",
+            "command": "python C:/Train/python-training/udemy_python_advanced/Chapter04_Functions/Arguments/command_line_args.py",
+            "args": [
+                "--name",
+                "Joe",
+                "--age",
+                "27",
+                "--admin",
+                "False",
+            ],
+            "group": "build",
+        },
+    ]
+}

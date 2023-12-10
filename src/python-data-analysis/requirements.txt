@@ -1,0 +1,5 @@
+ruff # formatter, linter
+mypy # Type annoataion linter
+
+psutil
+pySerial 

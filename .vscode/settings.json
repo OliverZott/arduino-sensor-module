@@ -1,0 +1,22 @@
+{
+    // "notebook.formatOnSave.enabled": true,
+    // "notebook.codeActionsOnSave": {
+    //     "source.fixAll": true,
+    //     "source.organizeImports": true
+    // },
+    "[python]": {
+        "editor.formatOnSave": true,
+        //     "editor.codeActionsOnSave": {
+        //         "source.fixAll": true,
+        //         "source.organizeImports": true
+        //     },
+        "editor.defaultFormatter": "charliermarsh.ruff"
+    },
+    "autoDocstring.docstringFormat": "numpy",
+    "files.exclude": {
+        "**/*.egg-info": true,
+        "**/.mypy_cache": true,
+        "**/.ruff_cache": true,
+        "**/build/": true,
+    }
+}
