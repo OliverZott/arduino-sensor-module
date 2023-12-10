@@ -2,6 +2,10 @@
 
 ## Prerequisites
 
+**Important**: select correct inerpreter in vs code after env activation.
+
+```bash
+
 ### Environment
 
 Generate virtual environment and install packages.
