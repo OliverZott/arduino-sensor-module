@@ -28,7 +28,8 @@ void loop() {
   byte humidity = 0;
   byte data[40] = {0};
   if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
-    Serial.print("Read DHT11 failed");
+    Serial.println("NaN,NaN");
+    delay(5000);
     return;
   }
   
