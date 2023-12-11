@@ -3,3 +3,8 @@ mypy # Type annoataion linter
 
 psutil
 pySerial 
+
+ipykernel
+
+matplotlib
+pandas
