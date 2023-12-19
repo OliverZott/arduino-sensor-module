@@ -3,6 +3,13 @@
 
 #include <SimpleDHT.h>
 
+struct DHT11Result
+{
+    int temperature;
+    int humidity;
+    bool error;
+};
+
 class DHT11Implementation
 {
 private:
@@ -11,8 +18,7 @@ private:
 
 public:
     DHT11Implementation(int pin);
-    void loop;
-    void setup;
-}
+    DHT11Result getData();
+};
 
-#endif DHT11IMPLEMENTATION_H
+#endif
