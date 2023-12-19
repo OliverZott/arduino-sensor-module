@@ -37,12 +37,10 @@
 
 Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
 
-/**************************************************************************/
 /*
     Displays some basic information on this sensor from the unified
     sensor API sensor_t type (see Adafruit_Sensor for more information)
 */
-/**************************************************************************/
 void displaySensorDetails(void)
 {
   sensor_t sensor;
@@ -68,11 +66,9 @@ void displaySensorDetails(void)
   delay(500);
 }
 
-/**************************************************************************/
 /*
     Configures the gain and integration time for the TSL2561
 */
-/**************************************************************************/
 void configureSensor(void)
 {
   /* You can also manually set the gain or enable auto-gain support */
@@ -122,16 +118,9 @@ void setup(void)
   /* Setup the sensor gain and integration time */
   configureSensor();
 
-  /* We're ready to go! */
   Serial.println("");
 }
 
-/**************************************************************************/
-/*
-    Arduino loop function, called once 'setup' is complete (your own code
-    should go here)
-*/
-/**************************************************************************/
 void loop(void)
 {
   /* Get a new sensor event */
