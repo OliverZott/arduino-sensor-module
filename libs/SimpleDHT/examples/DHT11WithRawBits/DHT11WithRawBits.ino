@@ -5,23 +5,25 @@
 //      GND: GND
 //      DATA: 2
 int pinDHT11 = 2;
-SimpleDHT11 dht11;
+SimpleDHT11 dht11(pinDHT11);
 
 void setup() {
-  Serial.begin(9600);
+  Serial.begin(115200);
 }
 
 void loop() {
   // start working...
   Serial.println("=================================");
-  Serial.println("Sample DHT11...");
+  Serial.println("Sample DHT11 with RAW bits...");
   
   // read with raw sample data.
   byte temperature = 0;
   byte humidity = 0;
   byte data[40] = {0};
-  if (dht11.read(pinDHT11, &temperature, &humidity, data)) {
-    Serial.print("Read DHT11 failed");
+  int err = SimpleDHTErrSuccess;
+  if ((err = dht11.read(&temperature, &humidity, data)) != SimpleDHTErrSuccess) {
+    Serial.print("Read DHT11 failed, err="); Serial.print(SimpleDHTErrCode(err));
+    Serial.print(","); Serial.println(SimpleDHTErrDuration(err)); delay(1000);
     return;
   }
   
@@ -36,8 +38,8 @@ void loop() {
   
   Serial.print("Sample OK: ");
   Serial.print((int)temperature); Serial.print(" *C, ");
-  Serial.print((int)humidity); Serial.println(" %");
+  Serial.print((int)humidity); Serial.println(" H");
   
   // DHT11 sampling rate is 1HZ.
-  delay(1000);
+  delay(1500);
 }
