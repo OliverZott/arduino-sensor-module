@@ -1,3 +1,5 @@
+
+#include "TSL2561Implementation.h"
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_TSL2561_U.h>
@@ -29,19 +31,11 @@
    (not connected to anything).  If you set the ADDR pin high
    or low, use TSL2561_ADDR_HIGH (0x49) or TSL2561_ADDR_LOW
    (0x29) respectively.
-
-   History
-   =======
-   2013/JAN/31  - First version (KTOWN)
 */
 
-Adafruit_TSL2561_Unified tsl = Adafruit_TSL2561_Unified(TSL2561_ADDR_FLOAT, 12345);
+TSL2561Implementation::TSL2561Implementation() : tsl(TSL2561_ADDR_FLOAT, 12345) {}
 
-/*
-    Displays some basic information on this sensor from the unified
-    sensor API sensor_t type (see Adafruit_Sensor for more information)
-*/
-void displaySensorDetails(void)
+void TSL2561Implementation::displaySensorDetails()
 {
   sensor_t sensor;
   tsl.getSensor(&sensor);
@@ -66,78 +60,40 @@ void displaySensorDetails(void)
   delay(500);
 }
 
-/*
-    Configures the gain and integration time for the TSL2561
-*/
-void configureSensor(void)
+void TSL2561Implementation::configureSensor()
 {
-  /* You can also manually set the gain or enable auto-gain support */
   // tsl.setGain(TSL2561_GAIN_1X);      /* No gain ... use in bright light to avoid sensor saturation */
   // tsl.setGain(TSL2561_GAIN_16X);     /* 16x gain ... use in low light to boost sensitivity */
   tsl.enableAutoRange(true); /* Auto-gain ... switches automatically between 1x and 16x */
 
-  /* Changing the integration time gives you better sensor resolution (402ms = 16-bit data) */
-  tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_13MS); /* fast but low resolution */
+  // tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_13MS); /* fast but low resolution */
   // tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_101MS);  /* medium resolution and speed   */
-  // tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_402MS);  /* 16-bit data but slowest conversions */
-
-  /* Update these values depending on what you've set above! */
-  Serial.println("------------------------------------");
-  Serial.print("Gain:         ");
-  Serial.println("Auto");
-  Serial.print("Timing:       ");
-  Serial.println("13 ms");
-  Serial.println("------------------------------------");
+  tsl.setIntegrationTime(TSL2561_INTEGRATIONTIME_402MS); /* 16-bit data but slowest conversions */
 }
 
-/**************************************************************************/
-/*
-    Arduino setup function (automatically called at startup)
-*/
-/**************************************************************************/
-void setup(void)
+void TSL2561Implementation::testConnection()
 {
-  Serial.begin(9600);
-  Serial.println("Light Sensor Test");
-  Serial.println("");
-
-  /* Initialise the sensor */
-  // use tsl.begin() to default to Wire,
-  // tsl.begin(&Wire2) directs api to use Wire2, etc.
   if (!tsl.begin())
   {
-    /* There was a problem detecting the ADXL345 ... check your connections */
-    Serial.print("Ooops, no TSL2561 detected ... Check your wiring or I2C ADDR!");
-    while (1)
-      ;
+    Serial.print("No TSL2561 detected ... Check your wiring or I2C ADDR!");
   }
 
-  /* Display some basic information on this sensor */
   displaySensorDetails();
-
-  /* Setup the sensor gain and integration time */
-  configureSensor();
-
-  Serial.println("");
 }
 
-void loop(void)
+TSL2561Result TSL2561Implementation::getData()
 {
-  /* Get a new sensor event */
+  // delay(2000);
+
   sensors_event_t event;
   tsl.getEvent(&event);
 
-  /* Display the results (light is measured in lux) */
   if (event.light)
   {
-    Serial.print(event.light);
-    Serial.println(" lux");
+    return {(int)event.light};
   }
-  else
+  else if (event.light == 0)
   {
-    /* If event.light = 0 lux the sensor is probably saturated
-       and no reliable data could be generated! */
-    Serial.println("Sensor overload");
+    return {0, true};
   }
-  delay(1750);
 }

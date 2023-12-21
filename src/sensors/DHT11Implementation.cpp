@@ -10,7 +10,8 @@ DHT11Implementation::DHT11Implementation(int pin = 2) : pinDHT11(pin) {}
 
 DHT11Result DHT11Implementation::getData()
 {
-    delay(5000);
+    // delay(2000);
+
     byte temperature = 0;
     byte humidity = 0;
     byte data[40] = {0};
