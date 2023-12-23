@@ -6,6 +6,16 @@ Testing possible wireless transmission technologies for conductive mediums (e.g.
 - wireless data transfer
 - local data storage
 
+## new sensor module
+
+<https://randomnerdtutorials.com/9-arduino-compatible-temperature-sensors-for-your-electronics-projects/>
+
+<https://www.bosch-sensortec.com/products/environmental-sensors/gas-sensors/>
+<https://www.bosch-sensortec.com/media/boschsensortec/downloads/datasheets/bst-bme280-ds002.pdf>
+
+<https://funduino.de/nr-23-bme280-luftdruck-luftfeuchtigkeits-und-temperatursensor>
+<https://www.amazon.de/ARCELI-Barometrischer-Temperatur-Feuchtigkeitssensor-Luftfeuchtigkeit/dp/B0CLS1Q22Z/ref=sr_1_5?__mk_de_DE=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=3G4S792QQZQKC&keywords=BME280&qid=1703232594&sprefix=bme280%2Caps%2C1074&sr=8-5>
+
 ## SD Card for logging
 
 <https://lastminuteengineers.com/arduino-micro-sd-card-module-tutorial/>
